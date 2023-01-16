@@ -56,7 +56,7 @@ export const signIn = async (req, res) =>{
             expires: new Date( new Date().getTime() + 300 * 100), 
         })
         .send({
-            message:"Creación completa",
+            message:"Login successful",
             datosUsuario : userFound,
             token: accessToken,
         })

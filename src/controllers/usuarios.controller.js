@@ -37,6 +37,10 @@ export const createUser = async (req, res) =>{
        // res.status(200).json({accessToken})
        //Cookies
        // En el date la cookie esta para 300 seconds
+
+       //GET CON POPULATE DE ROLES
+       const usuarioPopulate = await Usuario.findById(savedUser._id).populate('roles');
+     
        res.status(202)
         .cookie('accessToken', accessToken, 
         {
@@ -51,21 +55,8 @@ export const createUser = async (req, res) =>{
         })
         .send({
             message:"Creación completa",
-            datosUsuarioCreado : savedUser,
+            datosUsuarioCreado : usuarioPopulate,
         })
-       /*
-        const resultado = crearUsuario(body);
-        //Toda async function retorna una Promise
-        resultado.then( user => {
-            res.status(201).json({
-                valor: user
-            });
-        }).catch( err =>{
-            res.status(400).json({
-                error: err
-            })
-        })
-    */
 }
 export const getUsers = (req, res) =>{
       //res.send("Welcome to user ");
@@ -85,7 +76,7 @@ export const updateUserById = async (req, res) =>{
         //Para obtener datos actualizados el tercer param
         const usuarioActualizado = await Usuario.findByIdAndUpdate(req.params.id, req.body ,{
             new :true
-        });
+        }).populate('roles');
         res.status(200).json(usuarioActualizado);
         //Encontrar si existe el objeto
         //Buscando usuario pero como es int entonces parseamos
@@ -121,7 +112,7 @@ export const deleteUserById = async (req, res)=>{
 //FUNCIONES DE LOS CONTROLLERS-------------------------------------------------------------------------------------------------------------
 
 const obtenerUsuarios =async  ()=>{
-    const usuarios = await Usuario.find({});
+    const usuarios = await Usuario.find({}).populate('roles');
     return usuarios;
 }
 

@@ -10,6 +10,7 @@ import * as uploadsController from '../controllers/uploads.controller'
 //Al tener la raiz ya con la ruta solo manejo la raiz
 //Petición Get que obtiene todos los usuarios
 router.post('/profile', upload.single('avatar'), uploadsController.uploadProfile )
+router.post('/signS3', uploadsController.signS3 )
 //Petición get para el error 404
 router.get('*',(req,res)=>{
     res
