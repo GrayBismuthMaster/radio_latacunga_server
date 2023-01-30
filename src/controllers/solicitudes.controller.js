@@ -45,7 +45,20 @@ export const updateSolicitudById = async (req, res) =>{
         //Para obtener datos actualizados el tercer param
         const solicitudActualizada = await Solicitud.findByIdAndUpdate(req.params.id, req.body ,{
             new :true
+        }).populate({
+            path: 'usuario',
+            // select: ['nombre']
+        }).populate({
+            path: 'equipo',
+            // select: ['nombre']
+        }).populate({
+            path: 'mantenimiento',
+            // select: ['nombre']
+        }).populate({
+            path: 'componente',
+            // select: ['nombre']
         });
+
         res.status(200).json(solicitudActualizada);
         //Encontrar si existe el objeto
         //Buscando usuario pero como es int entonces parseamos
@@ -82,38 +95,38 @@ export const deleteSolicitudById = async (req, res)=>{
 
 const obtenerSolicitudes =async  ()=>{
     const solicitudes = await Solicitud.find({}).populate({
-        path: 'id_usuario',
-        select: ['nombre']
+        path: 'usuario',
+        // select: ['nombre']
     }).populate({
-        path: 'id_equipo',
-        select: ['nombre']
+        path: 'equipo',
+        // select: ['nombre']
     }).populate({
-        path: 'id_mantenimiento',
-        select: ['nombre']
+        path: 'mantenimiento',
+        // select: ['nombre']
     }).populate({
-        path: 'id_componente',
-        select: ['nombre']
+        path: 'componente',
+        // select: ['nombre']
     });
-    const solicitudFormateado = await solicitudes.map(solicitud =>{
-        const reservaObjeto = {
-            // motivo_reserva : reservaCita.motivo_reserva,
-            id:reservaCita.id,
-        //    fecha_hora_inicio_reserva: new Date(reservaCita.fecha_hora_inicio_reserva),
-        //     fecha_hora_fin_reserva: new Date(reservaCita.fecha_hora_fin_reserva),
-        //     estado_reserva:reservaCita.estado_reserva,
-        //     id_usuario:reservaCita.id_usuario,
-        //     id_profesional : reservaCita.id_profesional,
-        //     id_especialidad : reservaCita.id_especialidad,
-        //     id_consultorio : reservaCita.id_consultorio,
-        }
-        return reservaObjeto
-    })
+    // const solicitudFormateado = await solicitudes.map(solicitud =>{
+    //     const reservaObjeto = {
+    //         motivo_reserva : reservaCita.motivo_reserva,
+    //         id:reservaCita.id,
+    //        fecha_hora_inicio_reserva: new Date(reservaCita.fecha_hora_inicio_reserva),
+    //         fecha_hora_fin_reserva: new Date(reservaCita.fecha_hora_fin_reserva),
+    //         estado_reserva:reservaCita.estado_reserva,
+    //         id_usuario:reservaCita.id_usuario,
+    //         id_profesional : reservaCita.id_profesional,
+    //         id_especialidad : reservaCita.id_especialidad,
+    //         id_consultorio : reservaCita.id_consultorio,
+    //     }
+    //     return reservaObjeto
+    // })
     /*
     const formateado = new Date(reservasCitas[3].fecha_hora_inicio_reserva);
     
     console.log(formateado.toLocaleString());
     */
-    return solicitudFormateado;
+    return solicitudes;
 }
 const obtenerSolicitudesByUserId =async  (id_usuario)=>{
     const solicitudesById = await Solicitud.find({id_usuario});
@@ -132,6 +145,7 @@ const crearSolicitud= async (body) =>{
         tiempo_duracion,
         hora_salida,
         hora_regreso,
+        tipo_solicitud,
         estado_solicitud,
         parte,
         equipo,
@@ -148,6 +162,7 @@ const crearSolicitud= async (body) =>{
         tiempo_duracion,
         hora_salida,
         hora_regreso,
+        tipo_solicitud,
         estado_solicitud,
         parte,
         equipo,
@@ -157,28 +172,4 @@ const crearSolicitud= async (body) =>{
     });
     
     return await solicitud.save(); 
-    /*
-    const {error, value} = validarUsuario(req.body.nombre);
-    if(!error){
-        const usuario = {
-            id:usuarios.length + 1,
-            nombre:value.nombre
-        };
-        usuarios.push(usuario);
-        res.send(usuario);
-    }else{
-        res.status(400).send(error.details[0].message);
-        return;
-    }
-    */
 }
-//Obtener usuario por ID
-/*
-const validarHistoriaClinica = (historiaClinica)=>{
-    //Agregando JOI para validaciones
-    const schema = Joi.object({
-        nombre: Joi.string().min(3).required()
-    });
-    return (schema.validate({ historiaClinica:historiaClinica}))
-}
-*/

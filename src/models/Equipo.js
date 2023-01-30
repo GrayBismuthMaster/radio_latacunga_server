@@ -29,7 +29,7 @@ const equipoSchema = new mongoose.Schema({
                                                 required: true
                                             },                                    
     espacio_disco                   :       {
-                                                type: Number,
+                                                type: String,
                                                 required: false
                                             },      
     memoria_ram                     :       {
@@ -53,7 +53,7 @@ const equipoSchema = new mongoose.Schema({
                                                 type : Date,
                                                 required : true
                                             },
-    prioridadCpu                    :       {
+    prioridad_cpu                   :      {
                                                 type : String,
                                                 required : true
                                             }

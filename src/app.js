@@ -29,6 +29,7 @@ import componentes from './routes/componentes.routes'
 import uploads from './routes/uploads.routes'
 import equipos from './routes/equipos.routes';
 import mantenimientos from './routes/mantenimientos.routes'
+import trabajosNoRutinarios from './routes/trabajosNoRutinarios.routes'
 //Url encoded permite trabajar con query strings 
 //Permite el envío por formularios
 app.use(express.urlencoded({extended:true}));
@@ -65,6 +66,7 @@ app.use('/api/equipos', equipos);
 app.use('/api/solicitudes',solicitudes);
 app.use('/api/componentes',componentes);
 app.use('/api/mantenimientos',mantenimientos);
+app.use('/api/trabajosNoRutinarios',trabajosNoRutinarios);
 app.use('/api/uploads', uploads)
 //Nuevo para recuperar app
 module.exports=app;

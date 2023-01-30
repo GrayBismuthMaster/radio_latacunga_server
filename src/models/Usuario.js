@@ -18,11 +18,12 @@ const usuarioSchema = new mongoose.Schema({
                                 required : true
                             },
     imagen              :   {
-                                type:String
+                                type:String,
+                                default : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png'
                             },
     username            :   {
                                 type:String, 
-                                unique:true
+                                unique:true,
                             },
     email               :   {
                                 type: String,

@@ -6,7 +6,7 @@ export const createEquipo = (req, res) =>{
         //Toda async function retorna una Promise
         resultado.then( equipo => {
             res.status(201).json({
-                valor: equipo
+                equipo
             });
         }).catch( err =>{
             res.status(400).json({
@@ -105,7 +105,7 @@ const crearEquipo= async (body) =>{
         estado, 
         fecha_adquirido,      
         año_equipo,    
-        prioridadCpu,           
+        prioridad_cpu,           
      } = body;
     const equipo  = new Equipo({
                                 nombre,                                  
@@ -121,7 +121,7 @@ const crearEquipo= async (body) =>{
                                 estado, 
                                 fecha_adquirido,  
                                 año_equipo,
-                                prioridadCpu,                         
+                                prioridad_cpu,                         
                                 })
     return await equipo.save(); 
 }

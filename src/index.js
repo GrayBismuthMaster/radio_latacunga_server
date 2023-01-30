@@ -12,7 +12,7 @@ if(process.env.NODE_ENV !== 'production'){
     dbConexion(mongoEnvDev);    
     //const server = http.createServer(app);
     app.listen({port:process.env.DEV_PORT||5001},()=>{
-        console.log(`Servidor Levantado en el puerto ${process.env.PORT}`);
+        console.log(`Servidor Levantado en el puerto ${process.env.DEV_PORT}`);
     }); 
 
 }else{

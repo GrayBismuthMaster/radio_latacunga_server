@@ -1,0 +1,643 @@
+{
+	"info": {
+		"_postman_id": "13b677b2-1db5-45ac-baaa-ea2458e1139f",
+		"name": "Api Radio Latacunga",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13054407"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "getUsersGET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUserPOST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Jorgito Guayaco\",\r\n    \"area\" : \"Edición\",\r\n    \"imagen\": \"https://basic-learning-school.s3.amazonaws.com/rn_image_picker_lib_temp_5f2894c5-20dc-4f3e-bf9a-0112523a1ca4.jpg\",\r\n    \"username\": \"user2\",\r\n    \"email\": \"user2@user.com\",\r\n    \"password\": \"user2123\",\r\n    \"roles\": [\r\n        \"user\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editUserPUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Marquito Fuentes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/usuarios/63b4ec3cc0660562f48258cc",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"usuarios",
+								"63b4ec3cc0660562f48258cc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUserDELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/usuarios/63b613bc5a008c9e35c3cf0b",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"usuarios",
+								"63b613bc5a008c9e35c3cf0b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Equipos",
+			"item": [
+				{
+					"name": "getEquiposGET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/equipos",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"equipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createEquipoPOST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Dell G5\",   \r\n    \"procesador\":\"Intel\",         \r\n    \"marca\":\"Dell\",\r\n    \"tarjeta_grafica\":\"Radeon GTX 200\",        \r\n    \"modelo\":\"80cccssdd\",     \r\n    \"antivirus\":\"Avira\",\r\n    \"sistema_operativo\":\"Windows\", \r\n    \"espacio_disco\":800,   \r\n    \"memoria_ram\":\"16 gb\",          \r\n    \"area\":\"Mantenimiento\",        \r\n    \"estado\":false,\r\n    \"fecha_adquirido\" :\"2023-01-04\",\r\n    \"año_equipo\":\"2020\",          \r\n    \"prioridadCpu\":\"Alta\" \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/equipos",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"equipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editEquipoPUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{          \r\n    \"prioridadCpu\":\"Baja\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/equipos/63b618d95a008c9e35c3cf16",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"equipos",
+								"63b618d95a008c9e35c3cf16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEquipoDELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/equipos/63b618d95a008c9e35c3cf16",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"equipos",
+								"63b618d95a008c9e35c3cf16"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Componentes",
+			"item": [
+				{
+					"name": "getComponentesGET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/componentes",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"componentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createComponentePOST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Procesador Intel core I7 2.4ghz\",    \r\n    \"marca\":\"Intel\",              \r\n    \"area\":\"Mantenimiento\",                 \r\n    \"num_serie\":\"A2033944\",           \r\n    \"fecha_adquirido\":\"2023-01-04\",         \r\n    \"año_componente\":2010,     \r\n    \"prioridadComponente\":\"Alta\", \r\n    \"estadoComponente\":true,       \r\n    \"equipo\":\"63b61a915a008c9e35c3cf1c\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/componentes",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"componentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editComponentePUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{          \r\n    \"prioridadComponente\":\"Baja\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/componentes/63b6553eee8396eef4564d75",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"componentes",
+								"63b6553eee8396eef4564d75"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteComponenteDELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/componentes/63b6553eee8396eef4564d75",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"componentes",
+								"63b6553eee8396eef4564d75"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mantenimientos",
+			"item": [
+				{
+					"name": "getMantenimientosGET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/mantenimientos",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"mantenimientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createMantenimientoPOST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Mantenimiento Preventivo\",    \r\n    \"actividad\":\"Coloque de pasta termica en procesador\",       \r\n    \"partes\":[\"Base\", \"Corona\"],\r\n    \"frecuencia\":\"Semestral\",    \r\n    \"prioridad\":\"Media\",  \r\n    \"responsable\":\"Marco Solis\",\r\n    \"procedimiento\":\"Desensamblaje de partes del case y tornillos de mainboard para la extracción y coloque de pasta térmica en el procesador\",\r\n    \"diasParo\":1,      \r\n    \"equipos\":[\"63b61a915a008c9e35c3cf1c\"],   \r\n    \"descripcion\":\"Coloque de pasta termica\" \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/mantenimientos",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"mantenimientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editMantenimientoPUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{          \r\n    \"nombre\":\"Mantenimiento de prevencion\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/mantenimientos/63b657e43b4f3c52f5218d51",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"mantenimientos",
+								"63b657e43b4f3c52f5218d51"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMantenimientoDELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/mantenimientos/63b658473b4f3c52f5218d56",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"mantenimientos",
+								"63b658473b4f3c52f5218d56"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Solicitudes",
+			"item": [
+				{
+					"name": "getSolicitudesGET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/solicitudes",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"solicitudes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createSolicitudPOST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha_mantenimiento\":\"2023-05-01\",\r\n    \"hora_mantenimiento\":\"2023-07-16T19:20+01:00\",\r\n    \"area_mantenimiento\":\"Mantenimiento\",    \r\n    \"motivo_mantenimiento\":\"Lentitud debido a sobrecalentamiendo de procesador\",   \r\n    \"observaciones_mantenimiento\":\"El procesador se recalienta y afecta al desempeño del PC\",  \r\n    \"tiempo_duracion\": 15,\r\n    \"hora_salida\":\"2023-07-16T22:20+01:00\",\r\n    \"hora_regreso\":\"2023-07-17T02:20+01:00\",\r\n    \"estado_solicitud\":\"PENDIENTE\",\r\n    \"parte\":[\"base\", \"corona\", \"espaldar\"],\r\n    \"equipo\":[\"63b61a915a008c9e35c3cf1c\"],\r\n    \"usuario\":[\"63b613f35a008c9e35c3cf11\"],\r\n    \"mantenimiento\":[\"63b658473b4f3c52f5218d56\"],\r\n    \"componente\":[\"63b655a4ee8396eef4564d7a\"] \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/solicitudes",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"solicitudes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editSolicitudPUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{          \r\n    \"observaciones_mantenimiento\":\"Procesador con recalentamiento y ralentización de software\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/solicitudes/63b65be722e13d4ffed9df3c",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"solicitudes",
+								"63b65be722e13d4ffed9df3c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSolicitudDELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{enviroment}}:{{port}}/api/solicitudes/63b657e43b4f3c52f5218d51",
+							"protocol": "http",
+							"host": [
+								"{{enviroment}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"solicitudes",
+								"63b657e43b4f3c52f5218d51"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "api/auth/signIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@admin.com\",\r\n  \"password\" : \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "Lenin",
+									"disabled": true
+								},
+								{
+									"key": "cedula",
+									"value": "1720412235",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/auth/signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombre\": \"MarcoNormal\", \r\n        \"cedula\": \"1708721352\",\r\n        \"fecha_nacimiento\" : \"2021/10/22\",\r\n        \"sexo\" : \"1\",\r\n        \"estado_civil\" : \"Casado\",\r\n        \"religion\": \"Cruzadas\", \r\n        \"ocupacion\" : \"Trabajador\", \r\n        \"lugar_nacimiento\" : \"Quito\", \r\n        \"residencia\" : \"Palmitoe\", \r\n        \"domicilio\" : \"Por ahí\", \r\n        \"telefono\" : \"093321231\", \r\n        \"estado\" : \"1\", \r\n        \"imagen\" : \"http.LAdsasdas\", \r\n        \"username\" : \"normal\", \r\n        \"email\" : \"normal@dadasd.com\", \r\n        \"password\" : \"normal123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "enviroment",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "port",
+			"value": "5000"
+		}
+	]
+}

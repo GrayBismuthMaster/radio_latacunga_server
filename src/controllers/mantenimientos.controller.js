@@ -6,7 +6,7 @@ export const createMantenimiento = (req, res) =>{
         //Toda async function retorna una Promise
         resultado.then( mantenimiento => {
             res.status(201).json({
-                valor: mantenimiento
+                mantenimiento
             });
         }).catch( err =>{
             res.status(400).json({
@@ -99,9 +99,8 @@ const crearMantenimiento= async (body) =>{
         prioridad,  
         responsable,
         procedimiento,
-        diasParo,      
-        equipos,   
-        descripcion           
+        dias_paro,      
+        duracion,
      } = body;
     const mantenimiento  = new Mantenimiento({
                                     nombre,    
@@ -111,9 +110,8 @@ const crearMantenimiento= async (body) =>{
                                     prioridad,  
                                     responsable,
                                     procedimiento,
-                                    diasParo,      
-                                    equipos,   
-                                    descripcion                         
+                                    dias_paro,    
+                                    duracion,                   
                                 })
     return await mantenimiento.save(); 
 }

@@ -32,7 +32,7 @@ const solicitudSchema = new mongoose.Schema({
     hora_regreso                    :       {
                                                 type: Date,
                                                 required: true
-                                            },           
+                                            },      
     estado_solicitud                :       {
                                                 type: String,
                                                 required: true
