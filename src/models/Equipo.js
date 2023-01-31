@@ -53,7 +53,7 @@ const equipoSchema = new mongoose.Schema({
                                                 type : Date,
                                                 required : true
                                             },
-    prioridad_cpu                   :      {
+    prioridad_cpu                   :       {
                                                 type : String,
                                                 required : true
                                             }

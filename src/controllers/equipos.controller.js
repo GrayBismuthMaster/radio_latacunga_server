@@ -40,6 +40,12 @@ export const getEquipoById = async (req, res) =>{
         const equipo = await Equipo.findById(req.params.id);
         res.status(200).json(equipo);
 }
+
+export const getEquiposByAreaId = async (req,res)=>{
+    let equiposArea = await Equipo.find({area: req.params.id});
+    res.status(200).json(equiposArea);
+}
+
 export const updateEquipoById = async (req, res) =>{
         //Para obtener datos actualizados el tercer param
         const equipoActualizada = await Equipo.findByIdAndUpdate(req.params.id, req.body ,{

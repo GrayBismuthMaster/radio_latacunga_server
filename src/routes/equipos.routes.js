@@ -7,6 +7,7 @@ import * as equiposController from '../controllers/equipos.controller'
 router.get('/',equiposController.getEquipos)
 //Petición POST que crea una historia clinica
 router.post('/',equiposController.createEquipo)
+router.get('/area/:id',equiposController.getEquiposByAreaId);
 //Petición GET para obtener historias clinicas por id de usuario
 router.get('/user/:id',equiposController.getEquipoByUserId)
 //Petición GET para obtener historias clinicas por id de historia clinica

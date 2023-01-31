@@ -6,7 +6,7 @@ const solicitudSchema = new mongoose.Schema({
                                             },
 
     hora_mantenimiento              :       {
-                                                type: Date,
+                                                type: String,
                                                 required: true
                                             },
     area_mantenimiento              :       {
@@ -21,23 +21,23 @@ const solicitudSchema = new mongoose.Schema({
                                                 type: String,
                                                 required: true
                                             },  
-    tiempo_duracion                 :       {
-                                                type: Number,
-                                                required: true
-                                            },    
+    // tiempo_duracion                 :       {
+    //                                             type: Number,
+    //                                             required: true
+    //                                         },    
     hora_salida                     :       {
                                                 type: Date,
-                                                required: true
+                                                required: false
                                             },     
     hora_regreso                    :       {
                                                 type: Date,
-                                                required: true
+                                                required: false
                                             },      
     estado_solicitud                :       {
                                                 type: String,
                                                 required: true
                                             },               
-    parte                           :       {
+    partes                           :       {
                                                 type : Array, 
                                                 required : true
                                             },                 
@@ -52,15 +52,19 @@ const solicitudSchema = new mongoose.Schema({
                                                 type: mongoose.Schema.Types.ObjectId,
                                                 required: true
                                             },
-    mantenimiento                   :       {
-                                                ref: 'Mantenimiento',
-                                                type: mongoose.Schema.Types.ObjectId,
-                                                required: true
-                                            },
-    componente                      :       {
-                                                ref: 'Componente',
-                                                type: mongoose.Schema.Types.ObjectId,
-                                                required: true
-                                            },
+    tipo_solicitud                  :       {
+                                                type : String,
+                                                required : true
+                                            }
+    // mantenimiento                   :       {
+    //                                             ref: 'Mantenimiento',
+    //                                             type: mongoose.Schema.Types.ObjectId,
+    //                                             required: true
+    //                                         },
+    // componente                      :       {
+    //                                             ref: 'Componente',
+    //                                             type: mongoose.Schema.Types.ObjectId,
+    //                                             required: true
+    //                                         },
 });
 module.exports = mongoose.model('Solicitud',solicitudSchema);

@@ -6,9 +6,7 @@ export const createSolicitud = (req, res) =>{
         const resultado = crearSolicitud(body);
         //Toda async function retorna una Promise
         resultado.then( solicitud => {
-            res.status(201).json({
-                valor: solicitud
-            });
+            res.status(201).json(solicitud);
         }).catch( err =>{
             res.status(400).json({
                 error: err
@@ -100,13 +98,15 @@ const obtenerSolicitudes =async  ()=>{
     }).populate({
         path: 'equipo',
         // select: ['nombre']
-    }).populate({
-        path: 'mantenimiento',
-        // select: ['nombre']
-    }).populate({
-        path: 'componente',
-        // select: ['nombre']
-    });
+    })
+
+    // .populate({
+    //     path: 'mantenimiento',
+    //     // select: ['nombre']
+    // }).populate({
+    //     path: 'componente',
+    //     // select: ['nombre']
+    // });
     // const solicitudFormateado = await solicitudes.map(solicitud =>{
     //     const reservaObjeto = {
     //         motivo_reserva : reservaCita.motivo_reserva,
@@ -147,7 +147,7 @@ const crearSolicitud= async (body) =>{
         hora_regreso,
         tipo_solicitud,
         estado_solicitud,
-        parte,
+        partes,
         equipo,
         usuario,
         mantenimiento,
@@ -164,7 +164,7 @@ const crearSolicitud= async (body) =>{
         hora_regreso,
         tipo_solicitud,
         estado_solicitud,
-        parte,
+        partes,
         equipo,
         usuario,
         mantenimiento,
