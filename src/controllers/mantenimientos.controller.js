@@ -1,18 +1,22 @@
 const Mantenimiento = require('../models/Mantenimiento');
 
-export const createMantenimiento = (req, res) =>{
+export const createMantenimiento = async (req, res) =>{
         let body = req.body;
-        const resultado = crearMantenimiento(body);
+        const resultado =await crearMantenimiento(body);
         //Toda async function retorna una Promise
-        resultado.then( mantenimiento => {
+        const mantenimiento = await Mantenimiento.findById(resultado._id).populate('componente');
+        console.log(mantenimiento);
+        try {
             res.status(201).json({
                 mantenimiento
             });
-        }).catch( err =>{
+            
+        } catch (error) {
             res.status(400).json({
-                error: err
+                error
             })
-        })
+        }
+            
         console.log(resultado);
     
 }
@@ -80,7 +84,7 @@ export const deleteMantenimientoById = async (req, res)=>{
 //FUNCIONES DE LOS CONTROLLERS-------------------------------------------------------------------------------------------------------------
 
 const obtenerMantenimientos =async  ()=>{
-    const mantenimientos = await Mantenimiento.find({});
+    const mantenimientos = await Mantenimiento.find({}).populate('componente');
     return mantenimientos;
 }
 const obtenerMantenimientoByUserId =async  (id_usuario)=>{
@@ -94,7 +98,7 @@ const crearMantenimiento= async (body) =>{
     const { 
         nombre,    
         actividad,       
-        partes,
+        componente,
         frecuencia,    
         prioridad,  
         responsable,
@@ -105,7 +109,7 @@ const crearMantenimiento= async (body) =>{
     const mantenimiento  = new Mantenimiento({
                                     nombre,    
                                     actividad,       
-                                    partes,
+                                    componente,
                                     frecuencia,    
                                     prioridad,  
                                     responsable,

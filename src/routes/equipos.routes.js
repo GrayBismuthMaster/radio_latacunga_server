@@ -16,7 +16,7 @@ router.get('/componente/:id',equiposController.getEquipoById)
 router.put('/:id',equiposController.updateEquipoById)
 //Petición Delete para borrar una historia clinica por id
 router.delete('/:id',equiposController.deleteEquipoById)
-
+router.get('/componentes/:id', equiposController.getComponentesByEquipoId);
 //Petición get para el error 404
 router.get('*',(req,res)=>{
     res

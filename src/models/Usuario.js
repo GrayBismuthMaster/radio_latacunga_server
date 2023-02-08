@@ -5,6 +5,10 @@ const usuarioSchema = new mongoose.Schema({
                                 type: String,
                                 required:true
                             },
+    cedula_identidad    :   {
+                                type : String,
+                                required : true
+                            },
     fecha_actual        :   {
                                 type: Date, 
                                 default:Date.now()

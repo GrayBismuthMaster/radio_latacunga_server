@@ -24,11 +24,16 @@ const componenteSchema = new mongoose.Schema({
                                                 type : Date,
                                                 required : true
                                             },
-    prioridadComponente             :       {
+    prioridad_componente             :       {
                                                 type : String,
                                                 required : true
                                             },
-    estadoComponente                :       {
+    estado_componente                :       {
+                                                type : Boolean,
+                                                required : false,
+                                                default : true
+                                            },
+    tipo                            :       {
                                                 type : String,
                                                 required : true
                                             },

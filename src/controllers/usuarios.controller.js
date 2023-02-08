@@ -7,6 +7,7 @@ export const createUser = async (req, res) =>{
         let body = req.body;
         const usuario  = new Usuario({
             nombre           : body.nombre,
+            cedula_identidad : body.cedula_identidad,
             estado           : body.estado,
             area             : body.area,
             imagen           : body.imagen,

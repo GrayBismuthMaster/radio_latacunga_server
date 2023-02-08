@@ -1,18 +1,31 @@
 import Solicitud from '../models/Solicitud';
 
 
-export const createSolicitud = (req, res) =>{
+export const createSolicitud =async (req, res) =>{
         let body = req.body;
-        const resultado = crearSolicitud(body);
+        const resultado = await crearSolicitud(body);
         //Toda async function retorna una Promise
-        resultado.then( solicitud => {
-            res.status(201).json(solicitud);
-        }).catch( err =>{
-            res.status(400).json({
-                error: err
-            })
-        })
+        
         console.log(resultado);
+        const solicitud = await Solicitud.findById(resultado._id).populate({
+            path: 'usuario',
+            // select: ['nombre']
+        }).populate({
+            path: 'equipo',
+            // select: ['nombre']
+        }).populate({
+            path : 'mantenimiento'
+        });
+        console.log(solicitud);
+        try {
+            res.status(201).json(solicitud);
+            
+            
+        } catch (error) {
+            res.status(400).json({
+                error
+            })   
+        }
     
 }
 export const getSolicitudes = (req, res) =>{
@@ -50,12 +63,10 @@ export const updateSolicitudById = async (req, res) =>{
             path: 'equipo',
             // select: ['nombre']
         }).populate({
-            path: 'mantenimiento',
-            // select: ['nombre']
+            path : 'mantenimiento'
         }).populate({
-            path: 'componente',
-            // select: ['nombre']
-        });
+            path : 'componente'
+        })
 
         res.status(200).json(solicitudActualizada);
         //Encontrar si existe el objeto
@@ -98,6 +109,10 @@ const obtenerSolicitudes =async  ()=>{
     }).populate({
         path: 'equipo',
         // select: ['nombre']
+    }).populate({
+        path : 'componente'
+    }).populate({
+        path : 'mantenimiento'
     })
 
     // .populate({
@@ -137,34 +152,30 @@ const obtenerSolicitudesByUserId =async  (id_usuario)=>{
 
 const crearSolicitud= async (body) =>{
     const {
-        fecha_mantenimiento,
-        hora_mantenimiento,
+        fecha_hora_solicitud,
         area_mantenimiento,    
         motivo_mantenimiento,   
         observaciones_mantenimiento,  
-        tiempo_duracion,
+        // tiempo_duracion,
         hora_salida,
         hora_regreso,
         tipo_solicitud,
         estado_solicitud,
-        partes,
         equipo,
         usuario,
         mantenimiento,
         componente                 
     } = body;
     const solicitud = new Solicitud({
-        fecha_mantenimiento,
-        hora_mantenimiento,
+        fecha_hora_solicitud,
         area_mantenimiento,    
         motivo_mantenimiento,   
         observaciones_mantenimiento,  
-        tiempo_duracion,
+        // tiempo_duracion,
         hora_salida,
         hora_regreso,
         tipo_solicitud,
         estado_solicitud,
-        partes,
         equipo,
         usuario,
         mantenimiento,

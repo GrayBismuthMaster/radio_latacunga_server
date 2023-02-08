@@ -8,8 +8,9 @@ const mantenimientoSchema = new mongoose.Schema({
                                                 type: String,
                                                 required:true    
                                             },
-    partes                          :       {
-                                                type: Array,
+    componente                      :       {
+                                                ref : 'Componente',
+                                                type: mongoose.Schema.Types.ObjectId,
                                                 required: false
                                             },
     frecuencia                      :       {

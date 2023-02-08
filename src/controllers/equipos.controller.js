@@ -1,5 +1,5 @@
 const Equipo = require('../models/Equipo');
-
+const Componente = require('../models/Componente');
 export const createEquipo = (req, res) =>{
         let body = req.body;
         const resultado = crearEquipo(body);
@@ -45,7 +45,10 @@ export const getEquiposByAreaId = async (req,res)=>{
     let equiposArea = await Equipo.find({area: req.params.id});
     res.status(200).json(equiposArea);
 }
-
+export const getComponentesByEquipoId = async(req,res)=>{
+    const componentes = await Componente.find({equipo: req.params.id }).populate('equipo');
+    res.status(200).json(componentes);
+}
 export const updateEquipoById = async (req, res) =>{
         //Para obtener datos actualizados el tercer param
         const equipoActualizada = await Equipo.findByIdAndUpdate(req.params.id, req.body ,{

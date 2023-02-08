@@ -1,20 +1,18 @@
 const Componente = require('../models/Componente');
 
-export const createComponente = (req, res) =>{
+export const createComponente =async (req, res) =>{
         let body = req.body;
-        const resultado = crearComponente(body);
+        const resultado = await crearComponente(body);
         //Toda async function retorna una Promise
-        resultado.then( componente => {
-            res.status(201).json({
-                valor: componente
-            });
-        }).catch( err =>{
+        const componente = await Componente.findById(resultado._id).populate('equipo');
+        try {
+            res.status(201).json(componente);    
+        } catch (error) {
+            console.log(error)
             res.status(400).json({
                 error: err
-            })
-        })
-        console.log(resultado);
-    
+            })   
+        }
 }
 export const getComponentes = (req, res) =>{
       //res.send("Welcome to user ");
@@ -80,11 +78,11 @@ export const deleteComponenteById = async (req, res)=>{
 //FUNCIONES DE LOS CONTROLLERS-------------------------------------------------------------------------------------------------------------
 
 const obtenerComponentes =async  ()=>{
-    const componentes = await Componente.find({});
+    const componentes = await Componente.find({}).populate('equipo');
     return componentes;
 }
 const obtenerComponenteByUserId =async  (id_usuario)=>{
-    const componentesById = await Componente.find({id_usuario});
+    const componentesById = await Componente.find({id_usuario}).populate('equipo');
     return componentesById;
 }
 
@@ -98,8 +96,9 @@ const crearComponente= async (body) =>{
         num_serie,                
         fecha_adquirido,         
         año_componente,     
-        prioridadComponente, 
-        estadoComponente,       
+        prioridad_componente, 
+        estado_componente,    
+        tipo,   
         equipo,             
      } = body;
     const componente  = new Componente({
@@ -109,8 +108,9 @@ const crearComponente= async (body) =>{
                                     num_serie,                
                                     fecha_adquirido,         
                                     año_componente,     
-                                    prioridadComponente, 
-                                    estadoComponente,       
+                                    prioridad_componente, 
+                                    estado_componente,   
+                                    tipo,    
                                     equipo,                       
                                 })
     return await componente.save(); 

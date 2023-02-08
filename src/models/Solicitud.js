@@ -1,13 +1,8 @@
 const mongoose = require("mongoose");
 const solicitudSchema = new mongoose.Schema({
-    fecha_mantenimiento             :       {
+    fecha_hora_solicitud                 :       {
                                                 type: Date,
-                                                required: true
-                                            },
-
-    hora_mantenimiento              :       {
-                                                type: String,
-                                                required: true
+                                                default : Date.now()
                                             },
     area_mantenimiento              :       {
                                                 type: String,
@@ -19,16 +14,32 @@ const solicitudSchema = new mongoose.Schema({
                                             }, 
     observaciones_mantenimiento     :       {
                                                 type: String,
-                                                required: true
+                                                required: false
                                             },  
     // tiempo_duracion                 :       {
     //                                             type: Number,
-    //                                             required: true
+    //                                             required: false
     //                                         },    
+    fecha_salida                    :       {
+                                                type : Date,
+                                                required : false
+                                            },
     hora_salida                     :       {
-                                                type: Date,
+                                                type: String,
                                                 required: false
                                             },     
+    fecha_entrega                   :       {
+                                                type : Date,
+                                                required : false
+                                            },
+    hora_entrega                    :       {
+                                                type : String,
+                                                required : false
+                                            },
+    fecha_regreso                   :       {
+                                                type : Date, 
+                                                required : false
+                                            },
     hora_regreso                    :       {
                                                 type: Date,
                                                 required: false
@@ -36,12 +47,7 @@ const solicitudSchema = new mongoose.Schema({
     estado_solicitud                :       {
                                                 type: String,
                                                 required: true
-                                            },               
-    partes                           :       {
-                                                type : Array, 
-                                                required : true
-                                            },                 
-
+                                            },       
     equipo                          :       {
                                                 ref: 'Equipo',
                                                 type: mongoose.Schema.Types.ObjectId,
@@ -55,16 +61,16 @@ const solicitudSchema = new mongoose.Schema({
     tipo_solicitud                  :       {
                                                 type : String,
                                                 required : true
-                                            }
-    // mantenimiento                   :       {
-    //                                             ref: 'Mantenimiento',
-    //                                             type: mongoose.Schema.Types.ObjectId,
-    //                                             required: true
-    //                                         },
-    // componente                      :       {
-    //                                             ref: 'Componente',
-    //                                             type: mongoose.Schema.Types.ObjectId,
-    //                                             required: true
-    //                                         },
+                                            },
+    mantenimiento                   :       {
+                                                ref: 'Mantenimiento',
+                                                type: mongoose.Schema.Types.ObjectId,
+                                                required: false
+                                            },
+    componente                      :       {
+                                                ref: 'Componente',
+                                                type: mongoose.Schema.Types.ObjectId,
+                                                required: true
+                                            },
 });
 module.exports = mongoose.model('Solicitud',solicitudSchema);
