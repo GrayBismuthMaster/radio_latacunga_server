@@ -38,6 +38,17 @@ export const getSolicitudes = (req, res) =>{
           console.log(error);
       })
 }
+export const getSolicitudesByType = (req, res) =>{
+    //res.send("Welcome to user ");
+    console.log('type recibido', req.params.type)
+    let solicitudes = obtenerSolicitudesByType(req.params.type);
+    solicitudes.then((accesoSolicitudes)=>{
+        res.json(accesoSolicitudes)
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+}
 export const getSolicitudByUserId = (req, res) =>{
     //res.send("Welcome to user ");
     let solicitudById = obtenerSolicitudesByUserId(req.params.id);
@@ -69,34 +80,10 @@ export const updateSolicitudById = async (req, res) =>{
         })
 
         res.status(200).json(solicitudActualizada);
-        //Encontrar si existe el objeto
-        //Buscando usuario pero como es int entonces parseamos
-        //let usuario = existeUsuario();
-        //let usuario = existeUsuario(req.params.id);
-        //Revisando que exista caso contrario enviamos un cod 404
-        //if(!usuario) res.status(404).send('El usuario no fue encontrado');
-        
-        /*
-        const {error, value} = validarUsuario(req.body.nombre);
-        if(error){
-            res.status(400).send(error.details[0].message);
-            return;
-        }
-        usuario.nombre = value.nombre;
-        res.send(usuario);
-        */
 }
 export const deleteSolicitudById = async (req, res)=>{
         await Solicitud.findByIdAndDelete(req.params.id);
         res.status(204).json();
-        //let usuario = existeUsuario(req.params.id);
-        //Revisando que exista caso contrario enviamos un cod 404
-        //if(!usuario) {
-           // res.status(404).send('El usuario no fue encontrado');
-           // return;
-        //}
-        //const index = usuarios.indexOf(usuario);
-        //usuarios.splice(index,1);
     
 }
 
@@ -114,33 +101,19 @@ const obtenerSolicitudes =async  ()=>{
     }).populate({
         path : 'mantenimiento'
     })
-
-    // .populate({
-    //     path: 'mantenimiento',
-    //     // select: ['nombre']
-    // }).populate({
-    //     path: 'componente',
-    //     // select: ['nombre']
-    // });
-    // const solicitudFormateado = await solicitudes.map(solicitud =>{
-    //     const reservaObjeto = {
-    //         motivo_reserva : reservaCita.motivo_reserva,
-    //         id:reservaCita.id,
-    //        fecha_hora_inicio_reserva: new Date(reservaCita.fecha_hora_inicio_reserva),
-    //         fecha_hora_fin_reserva: new Date(reservaCita.fecha_hora_fin_reserva),
-    //         estado_reserva:reservaCita.estado_reserva,
-    //         id_usuario:reservaCita.id_usuario,
-    //         id_profesional : reservaCita.id_profesional,
-    //         id_especialidad : reservaCita.id_especialidad,
-    //         id_consultorio : reservaCita.id_consultorio,
-    //     }
-    //     return reservaObjeto
-    // })
-    /*
-    const formateado = new Date(reservasCitas[3].fecha_hora_inicio_reserva);
-    
-    console.log(formateado.toLocaleString());
-    */
+    return solicitudes;
+}
+const obtenerSolicitudesByType =async  (type)=>{
+    const solicitudes = await Solicitud.find({tipo_solicitud : type}).populate({
+        path: 'usuario',
+    }).populate({
+        path: 'equipo',
+    }).populate({
+        path : 'componente'
+    }).populate({
+        path : 'mantenimiento'
+    })
+    console.log('solicitudes recibidas', solicitudes);
     return solicitudes;
 }
 const obtenerSolicitudesByUserId =async  (id_usuario)=>{

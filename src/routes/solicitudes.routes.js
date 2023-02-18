@@ -5,6 +5,9 @@ import * as solicitudesController from '../controllers/solicitudes.controller'
 //Al tener la raiz ya con la ruta solo manejo la raiz
 //Petición Get que obtiene todos las historias clinicas
 router.get('/',solicitudesController.getSolicitudes)
+
+//Petición Get que obtiene todos las historias clinicas
+router.get('/type/:type',solicitudesController.getSolicitudesByType)
 //Petición POST que crea una historia clinica
 router.post('/',solicitudesController.createSolicitud)
 //Petición GET para obtener historias clinicas por id de usuario
